@@ -48,12 +48,12 @@ my_cppcheck_all:
 	cppcheck --enable=all --suppress=missingIncludeSystem --std=c++20 .
 
 style:
-	find . -name "*.cc" -exec clang-format -i {} +
-	find . -name "*.h" -exec clang-format -i {} +
+	find . -name "*.cc" -exec clang-format -i --style=Google {} +
+	find . -name "*.h" -exec clang-format -i --style=Google {} +
 
 style_check:
-	find . -name "*.cc" -exec clang-format -n {} +
-	find . -name "*.h" -exec clang-format -n {} +
+	find . -name "*.cc" -exec clang-format -n --style=Google {} +
+	find . -name "*.h" -exec clang-format -n --style=Google {} +
 
 valgrind: test
 	valgrind --tool=memcheck --leak-check=yes --quiet ./$(TEST_UNITS)
